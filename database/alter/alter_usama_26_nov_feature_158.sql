@@ -1,0 +1,1 @@
+ALTER TABLE `fee_slip_master` ADD COLUMN `advance_refrence_by_challan_no` VARCHAR(25) NULL AFTER `customize_by_challan_no`; 

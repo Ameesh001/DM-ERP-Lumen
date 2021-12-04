@@ -1,0 +1,16 @@
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Assessment Category', 'exam_management/assessment_category', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Assessment Type', 'exam_management/assessment_type', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Assessment Master', 'exam_management/assessment_master', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Assessment Setup', 'exam_management/assessment_setup', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+
+ALTER TABLE `assessment_master` ADD COLUMN `assessment_category_id` INT NOT NULL AFTER `id`, ADD CONSTRAINT `assessment_master_assessment_category_id_foreign` FOREIGN KEY (`assessment_category_id`) REFERENCES `assessment_category`(`id`); 
+
+ALTER TABLE `new_admission_policy` ADD COLUMN `organization_id` INT(11) NOT NULL AFTER `id`, ADD CONSTRAINT `new_admission_policy_organization_id_foreign` FOREIGN KEY (`organization_id`) REFERENCES `organization_list`(`id`); 
+
+ALTER TABLE `new_admission_policy` CHANGE `state_id` `state_id` INT(11) NULL, CHANGE `region_id` `region_id` INT(11) NULL, CHANGE `city_id` `city_id` INT(11) NULL, CHANGE `campus_id` `campus_id` INT(11) NULL; 
+
+ALTER TABLE `new_admission_policy` ADD COLUMN `dob_from` DATE NOT NULL AFTER `class_id`, ADD COLUMN `dob_end` DATE NOT NULL AFTER `dob_from`, ADD COLUMN `remarks` TEXT NULL AFTER `dob_end`; 
+
+
+ALTER TABLE `student_registration` ADD COLUMN `is_wf_required` TINYINT DEFAULT 0 NOT NULL AFTER `entry_status`; 
+

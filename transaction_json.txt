@@ -1,0 +1,29 @@
+{
+    "month": 1,
+    "department_id": 1,
+    "hd_id": "PK_KHI_CNT_NZ",
+    "HD_OBJ": {
+        "country": 1,
+        "region": 1,
+        "zone": 1,
+        "kabina": 1
+    },
+    "kpi_id": 2,
+    "kpi_mapping_id": 2,
+    "kpi_value": 2,
+    "kpi_value_alp": 2,
+    "frequency": {
+        "type": "monthly|weekly|daily|yearly",
+        "value": {
+            "year": 2021,
+            "month": 1,
+            "week": 1,
+            "day": 1
+        }
+    },
+    "user_id": 1,
+    "created_by": 1,
+    "created_dt": "2021-03-2300: 00: 00",
+    "updated_by": null,
+    "updated_dt": "2021-03-2318: 10: 55"
+}

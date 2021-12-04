@@ -1,0 +1,27 @@
+ALTER TABLE `grading_type` CHANGE `grading_type_name` `grading_type_name` VARCHAR(50) NOT NULL; 
+INSERT INTO `grading_type` (`id`, `organization_id`, `grading_type_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '1', 'Holy Quran', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_type` (`id`, `organization_id`, `grading_type_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '1', 'Acadamic', NULL, NULL, NULL, NULL, NULL, '1'); 
+
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '1', 'Excellent', 'E', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '1', 'Good', 'G', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '1', 'Need Improvement', 'NI', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '2', 'Excellent', 'E', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '2', 'Good', 'G', NULL, NULL, NULL, NULL, NULL, '1'); 
+INSERT INTO `grading_remarks` (`id`, `grading_type_id`, `grading_remarks`, `short_name`, `deleted_at`, `created_by`, `updated_by`, `created_at`, `updated_at`, `is_enable`) VALUES (NULL, '2', 'Need Improvement', 'NI', NULL, NULL, NULL, NULL, NULL, '1'); 
+
+
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Exam Management', 'exam_management', NULL, 'mdi mdi-folder-multiple-outline', '0', '1', NULL, '1', '1', '0', '0', '1', '2021-09-06 12:00:54', NULL, NULL, NULL, NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Grading Exam', 'exam_management/grading_exam', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Exam Type', 'exam_management/exam_type', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Exam Setup', 'exam_management/exam_setup', NULL, 'mdi mdi-folder-multiple-outline', '88', '0', '{\"POST\":\"Add\",\"PUT\":\"Update\",\"PATCH\":\"Status\",\"DELETE\":\"Remove\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', NULL, '2021-09-03 12:56:02', NULL, '1', NULL); 
+
+ALTER TABLE `grading_exam` ADD COLUMN `organization_id` INT NOT NULL AFTER `id`, ADD CONSTRAINT `grading_exam_organization_id_foreign` FOREIGN KEY (`organization_id`) REFERENCES `darulmadinah_mysql`.`organization_list`(`id`); 
+
+
+INSERT INTO `auth_modules` (`id`, `name`, `default_url`, `module_name`, `icon_class`, `parent_id`, `have_child`, `allowed_permissions`, `sorting`, `is_visible`, `detail`, `is_workflow`, `is_enable`, `created_at`, `updated_at`, `created_by`, `updated_by`, `deleted_at`) VALUES (NULL, 'Monthly Voucher Posting', 'admission_setup/monthly_voucher_posting', NULL, 'mdi mdi-folder-multiple-outline', '71', '0', '{\"POST\":\"Add\",\"GET\":\"View\"}', '1', '1', '1', '0', '1', '2021-09-24 14:27:13', NULL, '1', NULL, NULL);
+
+
+ALTER TABLE `fee_slip_master` ADD COLUMN `transaction_remarks` VARCHAR(100) NULL AFTER `payment_status`, ADD COLUMN `pay_date` DATE NULL AFTER `transaction_no`;
+
+ALTER TABLE `fee_slip_master` ADD COLUMN `transaction_amount` INT(11) NULL AFTER `transaction_remarks`; 
